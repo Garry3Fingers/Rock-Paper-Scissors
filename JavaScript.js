@@ -21,3 +21,33 @@ function getComputerChoice() {
   }
 }
 
+function playRound(playerChoice, computerChoice) {
+  let result;
+  switch (true) {
+    case (playerChoice === computerChoice):
+      result = "It's a draw";
+      break;
+    case (playerChoice === "ROCK" && computerChoice === "PAPER"):
+      result = "You Lose! Paper beat Rock!";
+      break;
+    case (playerChoice === "PAPER" && computerChoice === "SCISSORS"):
+      result = "You Lose! Scissors beat Paper!";
+      break;
+    case (playerChoice === "SCISSORS" && computerChoice === "ROCK"):
+      result = "You Lose! Rock beat Scissors!";
+      break;
+    case (playerChoice === "ROCK" && computerChoice === "SCISSORS"):
+      result = "You Win! Rock beat Scissors!";
+      break;
+    case (playerChoice === "PAPER" && computerChoice === "ROCK"):
+      result = "You Win! Paper beat Rock!";
+      break;
+    case (playerChoice === "SCISSORS" && computerChoice === "PAPER"):
+      result = "You Win! Scissors beat Paper!"
+      break;
+  }
+  return result;
+}
+
+//console.log(playRound(getPlayerChoice(), getComputerChoice()));
+
