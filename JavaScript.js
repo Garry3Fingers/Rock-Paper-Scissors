@@ -25,25 +25,25 @@ function playRound(playerChoice, computerChoice) {
   let result;
   switch (true) {
     case (playerChoice === computerChoice):
-      result = "It's a draw";
+      result = "It's a draw!";
       break;
     case (playerChoice === "ROCK" && computerChoice === "PAPER"):
-      result = "You Lose! Paper beat Rock!";
+      result = "You Lost the round! Paper beat Rock!";
       break;
     case (playerChoice === "PAPER" && computerChoice === "SCISSORS"):
-      result = "You Lose! Scissors beat Paper!";
+      result = "You Lost the round! Scissors beat Paper!";
       break;
     case (playerChoice === "SCISSORS" && computerChoice === "ROCK"):
-      result = "You Lose! Rock beat Scissors!";
+      result = "You Lost the round! Rock beat Scissors!";
       break;
     case (playerChoice === "ROCK" && computerChoice === "SCISSORS"):
-      result = "You Win! Rock beat Scissors!";
+      result = "You Won the round! Rock beat Scissors!";
       break;
     case (playerChoice === "PAPER" && computerChoice === "ROCK"):
-      result = "You Win! Paper beat Rock!";
+      result = "You Won the round! Paper beat Rock!";
       break;
     case (playerChoice === "SCISSORS" && computerChoice === "PAPER"):
-      result = "You Win! Scissors beat Paper!"
+      result = "You Won the round! Scissors beat Paper!"
       break;
   }
   return result;
@@ -51,3 +51,43 @@ function playRound(playerChoice, computerChoice) {
 
 //console.log(playRound(getPlayerChoice(), getComputerChoice()));
 
+game();
+
+function game() {
+  let playerScore = 0;
+  let computerScore = 0;
+  let score;
+  for (let i = 0; i < 5; i++) {
+    score = getResult();
+    if (score === 1) {
+      ++playerScore;
+    } else if (score === 0) {
+      ++computerScore;
+    }
+    console.log(`Current match score: Player - ${playerScore}, Computer - ${computerScore}`);
+  }
+  let finalScore = () => {
+    let finalMessage;
+    if (playerScore > computerScore) {
+      finalMessage = "You won the match. Congratulations!!!";
+    } else if (playerScore < computerScore) {
+      finalMessage = "The computer aces this match. Maybe someday it'll pretend that you can beat it.";
+    } else {
+      finalMessage = "It's a draw. Not bad for human being.";
+    }
+    return finalMessage;
+  }
+  //console.log(playerScore, computerScore);
+  console.log(finalScore());
+}
+
+function getResult() {
+  roundResult = playRound(getPlayerChoice(), getComputerChoice());
+  console.log(roundResult);
+  score = roundResult.charAt(4);
+  if (score === "W") {
+    return 1;
+  } else if (score === "L") {
+    return 0;
+  } 
+}
