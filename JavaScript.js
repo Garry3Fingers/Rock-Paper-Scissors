@@ -4,9 +4,11 @@ function getPlayerChoice() {
   if (playerChoice === "ROCK" || playerChoice === "PAPER" || playerChoice === "SCISSORS") {
     return playerChoice;  
   } else {
+//I using it for empty string or incorrect item
     return "text";
   }
 }
+
 
 function getPlayerInput() {
   let playerInput = prompt("Type which item you'll throw", "Rock or Paper or Scissors");
@@ -18,7 +20,9 @@ function getPlayerInput() {
   }
 }
 
+
 const randomNumber = () => Math.floor(Math.random() * 100);
+
 
 function getComputerChoice() {
   let computerChoice = randomNumber();
@@ -30,6 +34,7 @@ function getComputerChoice() {
     return 'SCISSORS';
   }
 }
+
 
 function playRound(playerChoice, computerChoice) {
   let result;
@@ -61,7 +66,10 @@ function playRound(playerChoice, computerChoice) {
   return result;
 }
 
+
+//Start the program
 game();
+
 
 function game() {
   let playerScore = 0;
@@ -79,6 +87,7 @@ function game() {
   console.log(countFinalScore(playerScore, computerScore));
 }
 
+
 function countFinalScore(playerScore, computerScore) {
   if (playerScore > computerScore) {
     return "You won the match. Congratulations!!!";
@@ -88,6 +97,7 @@ function countFinalScore(playerScore, computerScore) {
     return "It's a draw. Not bad for human being.";
   }
 }
+
 
 function getResult() {
   roundResult = playRound(getPlayerChoice(), getComputerChoice());
