@@ -1,10 +1,20 @@
 function getPlayerChoice() {
-  let playerInput = prompt("Type which item you'll throw", "Rock or Paper or Scissors");
+  let playerInput = getPlayerInput();
   let playerChoice = playerInput.toUpperCase();
   if (playerChoice === "ROCK" || playerChoice === "PAPER" || playerChoice === "SCISSORS") {
-    return playerChoice;
+    return playerChoice;  
   } else {
-    return alert("You typed incorrect item");
+    return "text";
+  }
+}
+
+function getPlayerInput() {
+  let playerInput = prompt("Type which item you'll throw", "Rock or Paper or Scissors");
+  if (playerInput === null) {
+// Restart the round. I don't know a more better solution for handle null now.
+    return getPlayerChoice();
+  } else {
+    return playerInput;
   }
 }
 
@@ -45,11 +55,11 @@ function playRound(playerChoice, computerChoice) {
     case (playerChoice === "SCISSORS" && computerChoice === "PAPER"):
       result = "You Won the round! Scissors beat Paper!"
       break;
+    default:
+      result = "You must choose the current item! The computer won this round because of it!";
   }
   return result;
 }
-
-//console.log(playRound(getPlayerChoice(), getComputerChoice()));
 
 game();
 
@@ -87,7 +97,7 @@ function getResult() {
   score = roundResult.charAt(4);
   if (score === "W") {
     return 1;
-  } else if (score === "L") {
+  } else if (score === "L" || score === "m") {
     return 0;
   } 
 }
