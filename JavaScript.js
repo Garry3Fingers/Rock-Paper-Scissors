@@ -18,13 +18,13 @@ function getPlayerInput() {
   }
 }
 
-const randomNumber = () => Math.floor(Math.random() * 100) + 1;
+const randomNumber = () => Math.floor(Math.random() * 100);
 
 function getComputerChoice() {
   let computerChoice = randomNumber();
-  if (computerChoice <= 33) {
+  if (computerChoice >= 66) {
     return "ROCK";
-  } else if (computerChoice > 33 && computerChoice <= 66) {
+  } else if (computerChoice >= 33) {
     return "PAPER";
   } else {
     return 'SCISSORS';
@@ -76,19 +76,17 @@ function game() {
     }
     console.log(`Current match score: Player - ${playerScore}, Computer - ${computerScore}`);
   }
-  let finalScore = () => {
-    let finalMessage;
-    if (playerScore > computerScore) {
-      finalMessage = "You won the match. Congratulations!!!";
-    } else if (playerScore < computerScore) {
-      finalMessage = "The computer aces this match. Maybe someday it'll pretend that you can beat it.";
-    } else {
-      finalMessage = "It's a draw. Not bad for human being.";
-    }
-    return finalMessage;
+  console.log(countFinalScore(playerScore, computerScore));
+}
+
+function countFinalScore(playerScore, computerScore) {
+  if (playerScore > computerScore) {
+    return "You won the match. Congratulations!!!";
+  } else if (playerScore < computerScore) {
+    return "The computer aces this match. Maybe someday it'll pretend that you can beat it.";
+  } else {
+    return "It's a draw. Not bad for human being.";
   }
-  //console.log(playerScore, computerScore);
-  console.log(finalScore());
 }
 
 function getResult() {
