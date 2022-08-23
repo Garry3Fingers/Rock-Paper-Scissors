@@ -2,19 +2,18 @@ function getPlayerChoice() {
   let playerInput = getPlayerInput();
   let playerChoice = playerInput.toUpperCase();
   if (playerChoice === "ROCK" || playerChoice === "PAPER" || playerChoice === "SCISSORS") {
-    return playerChoice;  
+    return playerChoice;
+  } else if (playerChoice === "CANCELED") {
+    return "Canceled";
   } else {
-//I using it for empty string or incorrect item
-    return "text";
+    return "Wrong input"
   }
 }
 
-
 function getPlayerInput() {
-  let playerInput = prompt("Type which item you'll throw", "Rock or Paper or Scissors");
+  let playerInput = prompt("Type the item which to throw", "Rock or Paper or Scissors");
   if (playerInput === null) {
-// Restart the round. I don't know a more better solution for handle null now.
-    return getPlayerChoice();
+    return "Canceled";
   } else {
     return playerInput;
   }
@@ -60,6 +59,9 @@ function playRound(playerChoice, computerChoice) {
     case (playerChoice === "SCISSORS" && computerChoice === "PAPER"):
       result = "You Won the round! Scissors beat Paper!"
       break;
+    case (playerChoice === "Canceled" && (computerChoice === "ROCK" || computerChoice === "PAPER" || computerChoice === "SCISSORS")):
+      result = "Canceled";
+      break;
     default:
       result = "You must choose the current item! The computer won this round because of it!";
   }
@@ -68,10 +70,10 @@ function playRound(playerChoice, computerChoice) {
 
 
 //Start the program
-game();
+playGame();
 
 
-function game() {
+function playGame() {
   let playerScore = 0;
   let computerScore = 0;
   let score;
@@ -81,14 +83,19 @@ function game() {
       ++playerScore;
     } else if (score === 0) {
       ++computerScore;
+    } else if (score === "draw") {
+      playerScore += 0;
+      computerScore += 0;
+    } else {
+      return "Canceled";
     }
     console.log(`Current match score: Player - ${playerScore}, Computer - ${computerScore}`);
   }
-  console.log(countFinalScore(playerScore, computerScore));
+  console.log(declareTheWinner(playerScore, computerScore));
 }
 
 
-function countFinalScore(playerScore, computerScore) {
+function declareTheWinner(playerScore, computerScore) {
   if (playerScore > computerScore) {
     return "You won the match. Congratulations!!!";
   } else if (playerScore < computerScore) {
@@ -107,5 +114,9 @@ function getResult() {
     return 1;
   } else if (score === "L" || score === "m") {
     return 0;
-  } 
+  } else if (score === " ") {
+    return "draw"
+  } else {
+    return "Canceled";
+  }
 }
