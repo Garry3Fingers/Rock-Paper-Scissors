@@ -18,3 +18,6 @@ Plan:
 - Create a loop function to play game five rounds and keep score with declaring a winner at the end. If player' count more than computer ones return "You win!" else "It isn't your day" 
 
 I have a vague idea of how I'll do the last points of the plan. 
+
+23.08.2022
+I've finished the program this evening. The hardest part is when you wrote the code and you don't know how to push last 10% without bugs. The articles about solving the problems was very helpful. The next step is to continue reading the curriculum to learn how make GUI.
