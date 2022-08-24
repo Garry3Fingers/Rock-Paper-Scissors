@@ -70,7 +70,7 @@ function playRound(playerChoice, computerChoice) {
 
 
 //Start the program
-playGame();
+//playGame();
 
 
 function playGame() {
