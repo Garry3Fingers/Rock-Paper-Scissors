@@ -21,3 +21,19 @@ I have a vague idea of how I'll do the last points of the plan.
 
 23.08.2022
 I've finished the program this evening. The hardest part is when you wrote the code and you don't know how to push last 10% without bugs. The articles about solving the problems was very helpful. The next step is to continue reading the curriculum to learn how make GUI.
+
+26.09.2022
+I'm starting creating UI to my game.
+
+Goals:
+- Create a three buttons for a player choice. 
+- Somewhere on the screen the program must display a result of each round.
+- It also must display the running score and announce a winner of the game once one player reaches 5 points.
+
+Plan:
+- Create an html structure and css for UI. 
+- Create a place for a block where with help of DOM the program will show a result of each round.
+- Create a place for a block where the program will display the running score.
+- Create a winner announcement.
+- Find a way for a winner declaration after one player reaches 5 points.
+- Refactoring old code along the way.
