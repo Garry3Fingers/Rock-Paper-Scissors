@@ -30,6 +30,29 @@ h1 {
 
 /* Main-container */
 
+.result-of-round {
+  margin-bottom: 20px;
+  height: 50px;
+}
+
+.result-of-round p {
+  font-size: 20px;
+  padding: 10px;
+  border: 2px solid black;
+}
+
+.won {
+  background-color: green;
+}
+
+.lost {
+  background-color: red;
+}
+
+.draw {
+  background-color: gray;
+}
+
 .main-container,
 .rock-button,
 .paper-button,

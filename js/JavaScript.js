@@ -1,76 +1,83 @@
-function getPlayerChoice() {
-  let playerInput = getPlayerInput();
-  let playerChoice = playerInput.toUpperCase();
-  if (playerChoice === "ROCK" || playerChoice === "PAPER" || playerChoice === "SCISSORS") {
-    return playerChoice;
-  } else if (playerChoice === "CANCELED") {
-    return "Canceled";
-  } else {
-    return "Wrong input"
-  }
-}
+// Player Choice Block
 
-function getPlayerInput() {
-  let playerInput = prompt("Type the item which to throw", "Rock or Paper or Scissors");
-  if (playerInput === null) {
-    return "Canceled";
-  } else {
-    return playerInput;
-  }
-}
+// const playerInput = (e) => console.loge.target.textContent;
 
+// buttons.forEach((button) => {
+//   button.addEventListener('click', playerInput)
+// });
+
+
+// function getPlayerChoice() {
+//   let playerInput = getPlayerInput();
+//   let playerChoice = playerInput.toUpperCase();
+//   if (playerChoice === "ROCK" || playerChoice === "PAPER" || playerChoice === "SCISSORS") {
+//     return playerChoice;
+//   } else if (playerChoice === "CANCELED") {
+//     return "Canceled";
+//   } else {
+//     return "Wrong input"
+//   }
+// }
+
+// Computer Choice Block
 
 const randomNumber = () => Math.floor(Math.random() * 100);
-
 
 function getComputerChoice() {
   let computerChoice = randomNumber();
   if (computerChoice >= 66) {
-    return "ROCK";
+    return "Rock";
   } else if (computerChoice >= 33) {
-    return "PAPER";
+    return "Paper";
   } else {
-    return 'SCISSORS';
+    return 'Scissors';
   }
 }
 
+// Result of Round
+const buttons = document.querySelectorAll('button');
+const divRoundResult = document.querySelector('.result-of-round');
+const paraResult = document.createElement('p');
 
-function playRound(playerChoice, computerChoice) {
-  let result;
+buttons.forEach((button) => {
+  button.addEventListener('click', playRound)
+});
+
+function playRound(e) {
+  let playerChoice = e.target.textContent;
+  let computerChoice = getComputerChoice();
   switch (true) {
     case (playerChoice === computerChoice):
-      result = "It's a draw!";
+      paraResult.className = 'draw';
+      paraResult.textContent = 'It\'s a draw!';
       break;
-    case (playerChoice === "ROCK" && computerChoice === "PAPER"):
-      result = "You Lost the round! Paper beat Rock!";
+    case (playerChoice === 'Rock' && computerChoice === 'Paper'):
+      paraResult.className = 'lost';
+      paraResult.textContent = 'You Lost the round! Paper beats Rock!';
       break;
-    case (playerChoice === "PAPER" && computerChoice === "SCISSORS"):
-      result = "You Lost the round! Scissors beat Paper!";
+    case (playerChoice === 'Paper' && computerChoice === 'Scissors'):
+      paraResult.className = 'lost';
+      paraResult.textContent = 'You Lost the round! Scissors beats Paper!';
       break;
-    case (playerChoice === "SCISSORS" && computerChoice === "ROCK"):
-      result = "You Lost the round! Rock beat Scissors!";
+    case (playerChoice === 'Scissors' && computerChoice === 'Rock'):
+      paraResult.className = 'lost';
+      paraResult.textContent = 'You Lost the round! Rock beats Scissors!';
       break;
-    case (playerChoice === "ROCK" && computerChoice === "SCISSORS"):
-      result = "You Won the round! Rock beat Scissors!";
+    case (playerChoice === 'Rock' && computerChoice === 'Scissors'):
+      paraResult.className = 'won';
+      paraResult.textContent = 'You Won the round! Rock beats Scissors!';
       break;
-    case (playerChoice === "PAPER" && computerChoice === "ROCK"):
-      result = "You Won the round! Paper beat Rock!";
+    case (playerChoice === 'Paper' && computerChoice === 'Rock'):
+      paraResult.className = 'won';
+      paraResult.textContent = 'You Won the round! Paper beats Rock!';
       break;
-    case (playerChoice === "SCISSORS" && computerChoice === "PAPER"):
-      result = "You Won the round! Scissors beat Paper!"
+    case (playerChoice === 'Scissors' && computerChoice === 'Paper'):
+      paraResult.className = 'won';
+      paraResult.textContent = 'You Won the round! Scissors beats Paper!'
       break;
-    case (playerChoice === "Canceled" && (computerChoice === "ROCK" || computerChoice === "PAPER" || computerChoice === "SCISSORS")):
-      result = "Canceled";
-      break;
-    default:
-      result = "You must choose the current item! The computer won this round because of it!";
   }
-  return result;
+  divRoundResult.appendChild(paraResult);
 }
-
-
-//Start the program
-//playGame();
 
 
 function playGame() {
