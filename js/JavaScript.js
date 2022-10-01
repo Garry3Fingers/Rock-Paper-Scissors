@@ -127,13 +127,18 @@ function declareTheWinner() {
 };
 
 
-// Start of the game block
+// Start/restart/new game block
 
 const beginOfGame = document.querySelector('.start-game button');
 
 beginOfGame.addEventListener('click', startGame);
 
+
+// This function also restarts correct game, and start new game
+
 function startGame() {
+
+  checkDivChild();
   
   buttons.forEach((button) => button.removeAttribute('disabled', ''));
   
@@ -145,8 +150,6 @@ function startGame() {
 
   beginOfGame.textContent = 'Restart Game';
 
- // divRoundResult.removeChild(paraResult);
-
 };
 
 const clearScore = () => {
@@ -154,5 +157,21 @@ const clearScore = () => {
   playerScore = 0;
 
   computerScore = 0;
+
+};
+
+function checkDivChild() {
+
+  if (divRunningScore.hasChildNodes()) {
+    
+    divRunningScore.removeChild(divRunningScore.lastChild);
+  
+  };
+
+  if (divRoundResult.hasChildNodes()) {
+
+    divRoundResult.removeChild(divRoundResult.firstChild);
+
+  }
 
 };
