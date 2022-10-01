@@ -82,7 +82,8 @@ function playRound(e) {
 
   divRoundResult.appendChild(paraResult);
   
-  score.textContent = `Current match score: Player - ${playerScore}, Computer - ${computerScore}`;
+  score.textContent = `Current match score: Player - ${playerScore}, \
+  Computer - ${computerScore}`;
   
   declareTheWinner();
 
@@ -114,7 +115,8 @@ function declareTheWinner() {
   
   } else if (computerScore === 5) {
     
-    winnerOfGame.textContent = 'The computer aces this match. Maybe someday it\'ll pretend that you can beat it.';
+    winnerOfGame.textContent = 'The computer aces this match. \
+     Maybe someday it\'ll pretend that you can beat it.';
     
     buttons.forEach((button) => button.setAttribute('disabled', ''));
     
@@ -146,7 +148,8 @@ function startGame() {
   
   divRunningScore.appendChild(score);
   
-  score.textContent = `Current match score: Player - ${playerScore}, Computer - ${computerScore}`;
+  score.textContent = `Current match score: Player - ${playerScore}, \
+  Computer - ${computerScore}`;
 
   beginOfGame.textContent = 'Restart Game';
 
@@ -175,3 +178,31 @@ function checkDivChild() {
   }
 
 };
+
+// JS for styling buttons
+
+const allButtons = document.querySelectorAll('button');
+
+const changeStyle = (e) => {
+
+  e.target.style.border = '5px solid #80949b';
+
+};
+
+allButtons.forEach((button) => {
+
+  button.addEventListener('mousedown', changeStyle)
+
+});
+
+const returnStyle = (e) => {
+
+  e.target.style.border = '3px solid #80949b';
+
+};
+
+allButtons.forEach((button) => {
+
+  button.addEventListener('mouseup', returnStyle)
+
+});
