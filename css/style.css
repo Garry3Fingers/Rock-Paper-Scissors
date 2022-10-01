@@ -54,9 +54,7 @@ h1 {
 }
 
 .main-container,
-.rock-button,
-.paper-button,
-.scissors-button {
+.shape-button {
   display: flex;
   flex-direction: column;
 }
@@ -83,7 +81,7 @@ img {
   border-radius: 20px;
 }
 
-button {
+.shape-button button {
   border: 3px solid #80949b;
   border-radius: 10px;
   background-color: #faebd7;
